@@ -16,9 +16,9 @@ import { authConfig } from "../config/auth.config.js";
 
 /* ── Access token (short-lived JWT) ── */
 export const signAccessToken = (userId) =>
-  jwt.sign({ sub: userId }, authConfig.accessToken.secret, {
-    expiresIn: authConfig.accessToken.expiresIn,
-  });
+ jwt.sign({ sub: userId }, authConfig.jwt.accessSecret, {
+  expiresIn: authConfig.jwt.accessExpiresIn,
+});
 
 /* ── Refresh token (opaque random string, hashed at rest) ── */
 export const issueRefreshToken = async (userId) => {

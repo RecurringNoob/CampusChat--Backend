@@ -9,7 +9,7 @@
 
 import { Otp }            from "../models/otp.model.js";
 import { generateOtp }    from "../utils/otp.util.js";
-import { sendOtpEmail }   from "../config/resend.js";
+import { sendOtpEmail }   from "../config/mailer.js";
 import { authConfig }     from "../config/auth.config.js";
 import bcrypt             from "bcrypt";
 

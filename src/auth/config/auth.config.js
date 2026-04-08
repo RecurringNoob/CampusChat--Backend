@@ -10,7 +10,8 @@ const REQUIRED = [
   "JWT_SECRET",
   "JWT_REFRESH_SECRET",
   "MONGO_URI",
-  "RESEND_API_KEY",
+  "SMTP_MAIL",
+  "SMTP_PASS",
   "GOOGLE_CLIENT_ID",
   "GOOGLE_CLIENT_SECRET",
   "GOOGLE_CALLBACK_URL",
@@ -60,5 +61,8 @@ export const authConfig = {
   },
 
   // Resend (email)
-  resendApiKey: process.env.RESEND_API_KEY,
+  mail: process.env.SMTP_MAIL,
+  pass:process.env.SMTP_PASS,
+  mailport:process.env.SMTP_PORT,
+  host:process.env.SMTP_HOST
 };
