@@ -20,7 +20,8 @@ import { authLimiter } from "./auth/middleware/rate.limit.middleware.js";
 import cors from "cors"
 const app    = express();
 const server = http.createServer(app);
-
+// Tell Express to trust the reverse proxy (Render) so rate limiting works
+app.set("trust proxy", 1);
 app.use(
   cors({
     origin: config.frontendUrl,
