@@ -20,6 +20,7 @@ export const initSocket = (server) => {
 
   io.on("connection", (socket) => {
     // Initialize per-socket state immediately after auth passes
+    console.log('[Socket] connected:', socket.id, 'user:', socket.user?.id);
     initSocketState(socket);
     registerSocketEvents(io, socket);
   });

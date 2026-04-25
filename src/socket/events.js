@@ -38,6 +38,7 @@ export const registerSocketEvents = (io, socket) => {
   });
 
   socket.on("find-match", () => {
+      console.log('[find-match] received from:', socket.id);
     enqueueMatch(socket, io);
   });
 
