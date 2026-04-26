@@ -32,6 +32,8 @@ export const registerSocketEvents = (io, socket) => {
   /* ── Phase 2: MATCHMAKING ── */
 
   socket.on("register-meta", (meta) => {
+      console.log('[register-meta] received from:', socket.id, '| meta:', meta);
+
     const { ok, error } = validateMeta(meta);
     if (!ok) return socket.emit("error", { code: "INVALID_META", message: error });
     registerMeta(socket.id, meta);

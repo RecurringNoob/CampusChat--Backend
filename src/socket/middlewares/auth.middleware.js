@@ -12,11 +12,14 @@ import { verifyAccessToken } from "../../auth/utils/jwt.util.js";
 export const socketAuth = (socket, next) => {
   try {
     if (process.env.NODE_ENV === "development") {
+      console.log('[socketAuth] dev bypass for socket:', socket.id);
       socket.user = { id: socket.id, name: "Dev User" };
       return next();
     }
 
     const token = socket.handshake.auth?.token;
+    console.log('[socketAuth] token present:', !!token);
+
     if (!token) return next(new Error("AUTH_REQUIRED"));
 
     socket.user = verifyAccessToken(token); // throws on invalid/expired
