@@ -20,4 +20,4 @@ export const signAccessToken = (userId) =>
  * callers should catch and handle appropriately.
  */
 export const verifyAccessToken = (token) =>
-  jwt.verify(token, authConfig.accessToken.secret);
+  jwt.verify(token, authConfig.jwt.accessSecret);
