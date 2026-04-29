@@ -6,6 +6,7 @@ export const webrtcHandler = (socket, io) => {
 
   /* ─── offer ─── */
   socket.on("offer", ({ offer, roomId, remoteId }) => {
+    console.log(`[offer] from ${socket.id} to ${remoteId} in room ${roomId}`);
     if (!roomId || !socket.rooms.has(roomId)) return;
 
     const remote = io.sockets.sockets.get(remoteId);
@@ -16,6 +17,7 @@ export const webrtcHandler = (socket, io) => {
 
   /* ─── answer ─── */
   socket.on("answer", ({ answer, remoteId, roomId }) => {
+    console.log(`[answer] from ${socket.id} to ${remoteId} in room ${roomId}`);
     if (!roomId || !socket.rooms.has(roomId)) return;
 
     const remote = io.sockets.sockets.get(remoteId);
@@ -26,6 +28,7 @@ export const webrtcHandler = (socket, io) => {
 
   /* ─── ice-candidate ─── */
   socket.on("ice-candidate", ({ candidate, remoteId, roomId }) => {
+    onsole.log(`[ice] from ${socket.id} to ${remoteId} in room ${roomId}`);
     if (!roomId || !socket.rooms.has(roomId)) return;
 
     const remote = io.sockets.sockets.get(remoteId);

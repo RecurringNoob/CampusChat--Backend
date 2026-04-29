@@ -51,6 +51,7 @@ export const registerSocketEvents = (io, socket) => {
   // security checks (socket.rooms.has) pass correctly.
 
   socket.on("join-room", ({ roomId }) => {
+     console.log(`[join-room] ${socket.id} joining ${roomId}`);
     const { ok, error } = validateRoomId(roomId);
     if (!ok) return socket.emit("error", { code: "INVALID_ROOM", message: error });
     joinRoom(socket, io, roomId);
