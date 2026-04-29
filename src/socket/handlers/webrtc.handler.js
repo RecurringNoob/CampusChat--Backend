@@ -28,7 +28,7 @@ export const webrtcHandler = (socket, io) => {
 
   /* ─── ice-candidate ─── */
   socket.on("ice-candidate", ({ candidate, remoteId, roomId }) => {
-    onsole.log(`[ice] from ${socket.id} to ${remoteId} in room ${roomId}`);
+    console.log(`[ice] from ${socket.id} to ${remoteId} in room ${roomId}`);
     if (!roomId || !socket.rooms.has(roomId)) return;
 
     const remote = io.sockets.sockets.get(remoteId);
