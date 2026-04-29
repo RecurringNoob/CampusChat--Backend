@@ -23,8 +23,10 @@ export const socketAuth = (socket, next) => {
     if (!token) return next(new Error("AUTH_REQUIRED"));
 
     socket.user = verifyAccessToken(token); // throws on invalid/expired
+     console.log('[socketAuth] token verified for user:', socket.user.sub);
     next();
   } catch {
+    console.error('[socketAuth] verification failed:', err.name, err.message); // ← add this
     next(new Error("INVALID_TOKEN"));
   }
 };
